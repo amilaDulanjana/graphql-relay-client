@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 58819b9d07c19d038270e23597284c6f
+ * @relayHash b1437ca126f76e5a0bbd6a343bf35b68
  */
 
 /* eslint-disable */
@@ -45,6 +45,14 @@ fragment LinkList_viewer on Viewer {
 fragment Link_link on Link {
   id
   url
+  createdAt
+  postedBy {
+    id
+    name
+  }
+  votes {
+    count
+  }
 }
 */
 
@@ -142,6 +150,50 @@ return {
                         "name": "url",
                         "args": null,
                         "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "createdAt",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "postedBy",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "User",
+                        "plural": false,
+                        "selections": [
+                          (v0/*: any*/),
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "name",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "votes",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "VoteConnection",
+                        "plural": false,
+                        "selections": [
+                          {
+                            "kind": "ScalarField",
+                            "alias": null,
+                            "name": "count",
+                            "args": null,
+                            "storageKey": null
+                          }
+                        ]
                       }
                     ]
                   }
@@ -158,7 +210,7 @@ return {
     "operationKind": "query",
     "name": "LinkListPageQuery",
     "id": null,
-    "text": "query LinkListPageQuery {\n  viewer {\n    ...LinkList_viewer\n    id\n  }\n}\n\nfragment LinkList_viewer on Viewer {\n  allLinks(last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Link_link\n        id\n      }\n    }\n  }\n}\n\nfragment Link_link on Link {\n  id\n  url\n}\n",
+    "text": "query LinkListPageQuery {\n  viewer {\n    ...LinkList_viewer\n    id\n  }\n}\n\nfragment LinkList_viewer on Viewer {\n  allLinks(last: 100, orderBy: createdAt_DESC) {\n    edges {\n      node {\n        ...Link_link\n        id\n      }\n    }\n  }\n}\n\nfragment Link_link on Link {\n  id\n  url\n  createdAt\n  postedBy {\n    id\n    name\n  }\n  votes {\n    count\n  }\n}\n",
     "metadata": {}
   }
 };

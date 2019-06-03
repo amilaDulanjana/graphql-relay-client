@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a3f1efd9fd6980c1a77e61fe22860d02
+ * @relayHash b7451c632c0477b5528309287bd48844
  */
 
 /* eslint-disable */
@@ -19,22 +19,28 @@ export type SignupUserInput = {|
   authProvider: AuthProviderSignupData,
 |};
 export type UserlinksLink = {|
+  description: string,
   url: string,
   votesIds?: ?$ReadOnlyArray<string>,
-  votes?: ?$ReadOnlyArray<LinkvotesVote>,
+  votes?: ?$ReadOnlyArray<UserlinksLinkvotesVote>,
 |};
-export type LinkvotesVote = {|
+export type UserlinksLinkvotesVote = {|
   userId?: ?string
 |};
 export type UservotesVote = {|
   linkId?: ?string,
-  link?: ?VotelinkLink,
+  link?: ?UservotesVotelinkLink,
 |};
-export type VotelinkLink = {|
+export type UservotesVotelinkLink = {|
+  description: string,
   url: string,
   postedById?: ?string,
   votesIds?: ?$ReadOnlyArray<string>,
-  votes?: ?$ReadOnlyArray<LinkvotesVote>,
+  votes?: ?$ReadOnlyArray<UservotesVotelinkLinkvotesVote>,
+|};
+export type UservotesVotelinkLinkvotesVote = {|
+  linkId?: ?string,
+  userId?: ?string,
 |};
 export type AuthProviderSignupData = {|
   email?: ?AUTH_PROVIDER_EMAIL

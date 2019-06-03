@@ -4,16 +4,19 @@ import {
     graphql
 } from 'react-relay';
 import Link from './Link'
-
+import NewVoteSubscription from './subscriptions/NewVoteSubscription'
 
 class LinkList extends Component {
 
+    componentDidMount() {
+        NewVoteSubscription()
+    }
+
     render() {
-        console.log("LinkList",this.props)
         return (
             <div>
-                {this.props.viewer.allLinks.edges.map(({ node }) =>
-                    <Link key={node.__id} link={node} />
+                {this.props.viewer.allLinks.edges.map(({ node }, index) =>
+                    <Link key={node.__id} link={node} index={index} />
                 )}
             </div>
         )

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 50d13673896a7da039479c79fd598fd3
+ * @relayHash 67c116f4d02db517f31069482800a4c2
  */
 
 /* eslint-disable */
@@ -10,6 +10,7 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 export type CreateLinkInput = {|
+  description: string,
   url: string,
   postedById?: ?string,
   votesIds?: ?$ReadOnlyArray<string>,
